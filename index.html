@@ -16,7 +16,8 @@
   <input type="text" data-bind="value: name">
   <input type="text" data-bind="value: nick">
 
-  <span data-bind="text: full"></span>
+  <p><button data-bind="click: captalize">Clique para captalizar</button></p>
+  <p data-bind="text: full"></p>
 
 
   <script type="text/javascript" src="/scripts/knockout-3.5.1.js"></script>
@@ -32,6 +33,11 @@
         this.full = ko.computed(() => {
           return `${this.name()} bem vindo seu novo usuário é ${this.nick()}`
         })
+        //Setar os nomes para maiúsculos
+        this.captalize = () => {
+          let current = this.name(); // ler o valor atual
+          this.name(current.toUpperCase()); // reescreve com o valor modificado
+        }
       }
 
     }
