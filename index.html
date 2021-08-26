@@ -9,10 +9,7 @@
 <body>
   <!-- A vinculação de text: name faz com que o elemento DOM associado exiba o valor de texto do seu parâmetro. -->
   <p>Hello: <span data-bind="text: name"></span></p>
-  <button data-bind="click: action">Clique</button>
-
-
-
+  <input type="text" data-bind="value: name">
 
 
   <script type="text/javascript" src="/scripts/knockout-3.5.1.js"></script>
@@ -21,8 +18,8 @@
     class WellcomeMessage {
 
       constructor() {
-        this.name = 'Júnior';
-        this.action = () => console.log('Arrow');
+        // observable ​​- são propriedades que emitem notificações automaticamente sempre que seu valor muda.
+        this.name = ko.observable('Júnior');
       }
 
     }
