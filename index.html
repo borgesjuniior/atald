@@ -7,14 +7,24 @@
   <title>Knockout</title>
 </head>
 <body>
+  <!-- A vinculação de text: name faz com que o elemento DOM associado exiba o valor de texto do seu parâmetro. -->
   <p>Hello: <span data-bind="text: name"></span></p>
+  <button data-bind="click: action">Clique</button>
+
+
+
 
 
   <script type="text/javascript" src="/scripts/knockout-3.5.1.js"></script>
   <script type="text/javascript">
 
-    function WellcomeMessage() {
-      this.name = 'Júnior'
+    class WellcomeMessage {
+
+      constructor() {
+        this.name = 'Júnior';
+        this.action = () => console.log('Arrow');
+      }
+
     }
 
     ko.applyBindings(new WellcomeMessage())
