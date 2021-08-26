@@ -8,23 +8,35 @@
 </head>
 <body>
   <!-- A vinculação de text: name faz com que o elemento DOM associado exiba o valor de texto do seu parâmetro. -->
-  <p>Hello: <span data-bind="text: name"></span></p>
+  <p>Hello: 
+    <strong data-bind="text: name"></strong> | initial-user: 
+    <strong data-bind="text: nick"></strong>
+  </p>
+
   <input type="text" data-bind="value: name">
+  <input type="text" data-bind="value: nick">
+
+  <span data-bind="text: full"></span>
 
 
   <script type="text/javascript" src="/scripts/knockout-3.5.1.js"></script>
   <script type="text/javascript">
 
-    class WellcomeMessage {
+    class AppViewModel {
 
       constructor() {
         // observable ​​- são propriedades que emitem notificações automaticamente sempre que seu valor muda.
         this.name = ko.observable('Júnior');
+        this.nick = ko.observable('user2082');
+        // computed properties - são observáveis e são calculadas com base nos valores de outros observáveis.
+        this.full = ko.computed(() => {
+          return `${this.name()} bem vindo seu novo usuário é ${this.nick()}`
+        })
       }
 
     }
 
-    ko.applyBindings(new WellcomeMessage())
+    ko.applyBindings(new AppViewModel())
     
   </script>
 </body>
